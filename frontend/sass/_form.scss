@@ -1,0 +1,149 @@
+// BUTTONS
+
+button.primary {
+   $bg: white;
+   $_second: lighten(blue, 14%);
+
+   $time: 0.3s;
+
+   font-size: 1em;
+   outline: none;
+	cursor: pointer;
+   position: relative;
+   background: $bg;
+   color: $first;
+   border: 0;
+   box-shadow: 0 2px 4px $first, 0 0 0 1px $_second;
+   border-radius: $standartBorder;
+   padding: 6px 10px;
+   transition: $time ease all;
+   border: $standartBorder solid transparent;
+
+   &.hasSpinner {
+
+      > * {
+         display: inline-block;
+         vertical-align: middle;
+      }
+
+   }
+
+   @media all and(max-width: $mediaMD) {
+      font-size: 14px;
+      padding: 6px 10px;
+   }
+
+
+   &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      background: $first-l;
+      display: block;
+      transition: $time ease all;
+      z-index: -1;
+   }
+
+	&::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 50%;
+		transform: translate(-50%, -50%);
+      background: $first;
+      display: block;
+      transition: $time ease all;
+      z-index: -1;
+   }
+
+   &:hover {
+      opacity: 0.9;
+      letter-spacing: 0.7px;
+      box-shadow: 0 0 0 0;
+      color: white;
+      border: $standartBorder solid $_second;
+      border-radius: $standartBorder;
+
+      &::before {
+         animation: $time ease before forwards;
+      }
+
+		&::after {
+			animation: $time ease after forwards;
+      }
+
+      .spinner {
+         border: $standartBorder solid $second;
+         border-right-color: $second-d;
+      }
+
+   }
+
+}
+
+@keyframes before {
+
+	from {
+		width: 0;
+		height: 3%;
+		left: 50%;
+	}
+
+	to {
+		width: 100%;
+		height: 3%;
+	}
+
+}
+
+@keyframes after {
+
+	0% {
+		width: 0%;
+      height: 0%;
+	}
+
+   50% {
+      border-radius: 50%;
+   }
+
+	100% {
+		width: 100%;
+      height: 100%;
+      opacity: 0.9;
+	}
+
+
+}
+
+
+
+// INPUTS
+
+input[type=text], input[type=password] {
+   $bg: white;
+   $second: lighten($first, 14%);
+
+   $time: 0.3s;
+
+   font-size: 1em;
+
+   position: relative;
+   border: 0;
+   margin: 8px;
+   padding: 4px;
+   border: $standartBorder solid $first;
+   border-radius: $standartBorder;
+   transition: $time ease all;
+
+   &:hover {
+      background: $second;
+      color: white;
+   }
+
+   @media all and(max-width: $mediaMD) {
+      font-size: 14px;
+   }
+
+}
