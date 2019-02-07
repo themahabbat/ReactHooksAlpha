@@ -6,4 +6,4 @@ mix.browserSync();
 
 
 mix.react(`${frontend}/js/app.js`, 'public/js')
-   .sass(`${frontend}/sass/app.scss`, 'public/css');
+   .sass(`${frontend}/sass/app.sass`, 'public/css');

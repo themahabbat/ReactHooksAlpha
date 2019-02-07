@@ -1,0 +1,26 @@
+#preloader
+  $color: red
+
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  font-size: 4em
+  text-shadow: 0 0 5px $color, 0 0 10px $color, 0 0 20px $color, 0 0 40px $color, 0 0 80px $color, 0 0 90px $color, 0 0 100px $color, 0 0 150px $color
+
+.spinner
+  width: $spinner-normal
+  height: $spinner-normal
+  display: inline-block
+  border: $standartBorder solid $first
+  border-right-color: $first-2d
+  border-radius: 50%
+  animation: 0.5s linear spin infinite
+  margin-right: 10px
+
+  @keyframes spin
+    to
+      transform: rotate(360deg)
+
+.text-center
+  text-align: center
