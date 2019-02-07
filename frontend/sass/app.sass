@@ -1,9 +1,9 @@
 @import mixins
 
-@import url("https://fonts.googleapis.com/css?family=Nunito")
+@import url("https://fonts.googleapis.com/css?family=Open+Sans")
 
 // CONFIG
-$mainFont: "Nunito"
+$mainFont: "Open Sans"
 $spinner-normal: 15px
 $standartBorder: 1.5px
 $standartTransition: 0.4s
@@ -75,13 +75,16 @@ button
 
 .alert
   position: relative
-  padding: 8px 6px
+  padding: 8px 10px
   color: $first-2d
   background: white
   border: 1px solid $first
   border-left: 4px solid $first
   border-radius: $standartBorder
   text-align: left
+
+  .message
+     margin-right: 25px
 
   &.small
     width: 50%
@@ -94,4 +97,5 @@ button
     top: 0
     right: 4px
     padding: 4px
+    margin-left: 10px
     color: $first-2d

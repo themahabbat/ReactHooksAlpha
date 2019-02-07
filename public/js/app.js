@@ -977,6 +977,9 @@ function invariant(condition, message) {
 /* unused harmony export getUserData */
 /* harmony export (immutable) */ __webpack_exports__["c"] = logout;
 /* harmony export (immutable) */ __webpack_exports__["d"] = metaHelper;
+/* harmony export (immutable) */ __webpack_exports__["e"] = namedRoute;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Routes__ = __webpack_require__(17);
+
 
 function initialize() {
 
@@ -1044,6 +1047,14 @@ function logout() {
 function metaHelper(meta) {
 
    if (meta == 'auth' && state.auth || meta == 'guest' && !state.auth || !meta) return true;else return false;
+}
+
+function namedRoute(name) {
+   var path = void 0;
+   __WEBPACK_IMPORTED_MODULE_0__Routes__["b" /* routes */].forEach(function (route) {
+      return route.name == name ? path = route.path : null;
+   });
+   return path;
 }
 
 /***/ }),
@@ -2984,15 +2995,18 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 var routes = [{
    path: '/',
+   name: 'home',
    component: __WEBPACK_IMPORTED_MODULE_0__Pages_Home__["a" /* default */],
    exact: true
 }, {
    path: '/signin',
+   name: 'auth.signin',
    component: __WEBPACK_IMPORTED_MODULE_1__Pages_SignIn__["a" /* default */],
    exact: true,
    meta: 'guest'
 }, {
    path: '/about',
+   name: 'pages.about',
    component: __WEBPACK_IMPORTED_MODULE_2__Pages_About__["a" /* default */],
    exact: true,
    meta: 'auth'
@@ -28549,7 +28563,11 @@ function Alert(props) {
    return props.message ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'alert' + additional + ' ' },
-      props.message,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'message' },
+         props.message
+      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
          'button',
          { className: 'close', onClick: props.onDismiss },
@@ -28596,9 +28614,18 @@ function Home(props) {
       'div',
       { className: 'container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'h2',
-         null,
-         'About Page'
+         'div',
+         { className: 'text-center' },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h2',
+            null,
+            'About Page'
+         ),
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h3',
+            null,
+            'Requires auth!'
+         )
       )
    );
 }
@@ -28612,9 +28639,12 @@ function Home(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Helpers__ = __webpack_require__(9);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
 
 
 
@@ -28631,11 +28661,11 @@ function CustomRoute(_ref) {
 
       if (meta == 'auth') {
          if (state.auth) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Route */], _extends({ path: path, component: component }, rest));else return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Route */], { path: path, render: function render() {
-               return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Redirect */], { to: { pathname: '/signin', from: path } });
+               return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Redirect */], { to: { pathname: Object(__WEBPACK_IMPORTED_MODULE_2__Helpers__["e" /* namedRoute */])('auth.signin'), from: path } });
             } });
       } else if (meta == 'guest') {
          if (!state.auth) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Route */], _extends({ path: path, component: component }, rest));else return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Route */], { path: path, render: function render() {
-               return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Redirect */], { to: { pathname: '/', from: path } });
+               return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Redirect */], { to: { pathname: Object(__WEBPACK_IMPORTED_MODULE_2__Helpers__["e" /* namedRoute */])('home'), from: path } });
             } });
       }
    }

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);.navbar {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);.navbar {
   position: relative;
   background: royalblue;
   color: white;
@@ -157,11 +157,19 @@
     padding: 10px;
   }
 
-  .navbar.active .links,
-  .navbar.active .menu {
+  .navbar.active .links {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .navbar.active .menu {
+    display: block;
+    color: #224fd7;
   }
 }
 
@@ -379,7 +387,7 @@ body,
 input,
 button,
 select {
-  font-family: "Nunito";
+  font-family: "Open Sans";
 }
 
 a {
@@ -438,13 +446,17 @@ button {
 
 .alert {
   position: relative;
-  padding: 8px 6px;
+  padding: 8px 10px;
   color: #16348c;
   background: white;
   border: 1px solid royalblue;
   border-left: 4px solid royalblue;
   border-radius: 1.5px;
   text-align: left;
+}
+
+.alert .message {
+  margin-right: 25px;
 }
 
 .alert.small {
@@ -459,6 +471,7 @@ button {
   top: 0;
   right: 4px;
   padding: 4px;
+  margin-left: 10px;
   color: #16348c;
 }
 

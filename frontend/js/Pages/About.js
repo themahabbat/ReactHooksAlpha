@@ -7,7 +7,10 @@ export default function Home(props) {
    return (
       <div className="container">
 
-         <h2>About Page</h2>
+         <div className="text-center">
+            <h2>About Page</h2>
+            <h3>Requires auth!</h3>
+         </div>
 
       </div>
    )

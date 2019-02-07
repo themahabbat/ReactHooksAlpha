@@ -6,12 +6,14 @@ export const routes = [
 
    {
       path: '/',
+      name: 'home',
       component: Home,
       exact: true
    },
 
    {
       path: '/signin',
+      name: 'auth.signin',
       component: SignIn,
       exact: true,
       meta: 'guest'
@@ -19,6 +21,7 @@ export const routes = [
 
    {
       path: '/about',
+      name: 'pages.about',
       component: About,
       exact: true,
       meta: 'auth'

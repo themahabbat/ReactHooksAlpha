@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { login } from '../Helpers'
+import { login, namedRoute } from '../Helpers'
 
 import { Spinner } from '../Components/Spinner'
 

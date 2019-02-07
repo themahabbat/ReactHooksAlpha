@@ -4,6 +4,8 @@ import {
    Redirect
 } from 'react-router-dom'
 
+import { namedRoute } from "./Helpers";
+
 
 export function CustomRoute({ path, component, meta, ...rest }) {
 
@@ -14,11 +16,11 @@ export function CustomRoute({ path, component, meta, ...rest }) {
 
       if (meta == 'auth') {
          if (state.auth) return (<Route path={path} component={component} {...rest} />)
-         else return (<Route path={path} render={() => (<Redirect to={{ pathname: '/signin', from: path }} />)} />)
+         else return (<Route path={path} render={() => (<Redirect to={{ pathname: namedRoute('auth.signin'), from: path }} />)} />)
       }
       else if (meta == 'guest') {
          if (!state.auth) return (<Route path={path} component={component} {...rest} />)
-         else return (<Route path={path} render={() => (<Redirect to={{ pathname: '/', from: path }} />)} />)
+         else return (<Route path={path} render={() => (<Redirect to={{ pathname: namedRoute('home'), from: path }} />)} />)
       }
 
    }

@@ -1,3 +1,4 @@
+import { routes } from "./Routes";
 
 export function initialize() {
 
@@ -82,4 +83,10 @@ export function metaHelper(meta) {
    if ((meta == 'auth' && state.auth) || (meta == 'guest' && !state.auth) || (!meta)) return true;
    else return false;
 
+}
+
+export function namedRoute(name) {
+   let path
+   routes.forEach(route => route.name == name ? path = route.path : null)
+   return path
 }

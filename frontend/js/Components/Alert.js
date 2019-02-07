@@ -14,7 +14,7 @@ export function Alert(props) {
    return (props.message) ? (
       <div className={`alert${additional} `}>
 
-         {props.message}
+         <div className="message">{props.message}</div>
 
          <button className="close" onClick={props.onDismiss}>
             <Icon type="s" icon="times" />
